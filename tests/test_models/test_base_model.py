@@ -23,7 +23,6 @@ class TEST_base(unittest.TestCase):
         try:
             os.remove("file.json")
         except Exception as e:
-            print(e)
             pass
 
     def test_init(self):

@@ -14,13 +14,16 @@ class FileStorage():
     __objects = {}
 
     def all(self):
+        """ This returns all the objects present in the file storage """
         return self.__objects
 
     def new(self, obj):
+        """ Creates a new entry and adds to file """
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
         self.__objects[key] = obj
 
     def save(self):
+        """ Save object to file"""
         obj_dict = {}
 
         for key, value in self.__objects.items():
@@ -29,6 +32,7 @@ class FileStorage():
             json.dump(obj_dict, f)
 
     def reload(self):
+        """ Reloads the file storage """
         try:
             with open(self.__file_path, "r") as f:
                 dict_obj = json.load(f)

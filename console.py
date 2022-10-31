@@ -14,6 +14,12 @@ class HBNBCommand(cmd.Cmd):
         cmd.Cmd.__init__(self)
         self.prompt = '(hbnb) '
 
+    def emptyline(self):
+        """ Called when the enter button is hit without an input"""
+        if self.lastcmd:
+            self.lastcmd = ""
+            return self.onecmd('\n')
+
     def do_quit(self, arg):
         sys.exit(1)
 
